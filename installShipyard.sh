@@ -8,7 +8,7 @@ if [ "$1" != "" ] && [ "$1" = "-h" ]; then
     echo "  PREFIX: prefix for container names"
     echo "  SHIPYARD_ARGS: these are passed to the Shipyard controller container as controller args"
     echo "  TLS_CERT_PATH: path to certs to enable TLS for Shipyard"
-    echo "  PORT: specify the listen port for the controller (default: 8080)"
+    echo "  PORT: specify the listen port for the controller (default: 8083)"
     echo "  PROXY_PORT: port to run docker proxy (default: 2375)"
     exit 1
 fi
@@ -28,7 +28,7 @@ CERT_PATH="/etc/shipyard"
 PROXY_PORT=${PROXY_PORT:-2375}
 SWARM_PORT=3375
 SHIPYARD_PROTOCOL=http
-SHIPYARD_PORT=${PORT:-8080}
+SHIPYARD_PORT=${PORT:-8083}
 DISCOVERY_BACKEND=etcd
 DISCOVERY_PORT=4003
 DISCOVERY_PEER_PORT=7003
@@ -336,7 +336,7 @@ elif [ "$ACTION" = "upgrade" ]; then
     remove_controller
     start_controller
 
-    wait_for_available $SHIPYARD_IP 8080
+    wait_for_available $SHIPYARD_IP 8083
 
     echo "Shipyard controller updated"
 
