@@ -1,4 +1,7 @@
 #!/bin/bash
+# shipyard node configuration var
+# export ACTION=node
+# export DISCOVERY=etcd://172.16.30.3:4003
 
 if [ "$1" != "" ] && [ "$1" = "-h" ]; then
     echo "Shipyard Deploy uses the following environment variables:"
