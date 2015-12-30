@@ -8,3 +8,5 @@ sudo gpasswd -a zeus docker
 sudo service docker restart
 newgrp docker
 # sudo docker pull sequenceiq/spark
+# add default docker images
+docker load < docker-proxy.tar
